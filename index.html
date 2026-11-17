@@ -1,0 +1,244 @@
+<title>Invitation Tremplin</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;600;700&family=Permanent+Marker&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+/* Layout: a founders' scrapbook on grid paper, one column read top to bottom; taped notes, marker scribbles, one runaway button. Committed light paper look. */
+:root{
+  --paper:#FBFAF6; --grid:#E4E8F3; --ink:#1B2440; --pen:#3D63DD; --mango:#FFB547; --hl:#FFD98F; --muted:#5A6380; --red:#D6453A; --tape:rgba(255,213,128,.75);
+  --display:"Space Grotesk","Inter",system-ui,sans-serif; --body:"Inter",system-ui,-apple-system,sans-serif; --hand:"Caveat","Segoe Script",cursive; --marker:"Permanent Marker","Caveat",cursive;
+  color-scheme:light;
+}
+html{background:var(--paper);overflow-x:clip}
+body{background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px;color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;overflow-x:hidden}
+.col{max-width:640px;margin:0 auto;padding-left:max(20px, env(safe-area-inset-left, 0px));padding-right:max(20px, env(safe-area-inset-right, 0px))}
+section{padding-block:44px;position:relative}
+.top{display:flex;justify-content:space-between;align-items:center;padding-block:26px 0}
+.logo{font-family:var(--display);font-weight:700;font-size:26px;letter-spacing:-.5px}
+.stamp{font-family:var(--marker);color:var(--red);border:3px solid var(--red);border-radius:8px;padding:2px 12px;transform:rotate(6deg);font-size:18px}
+.hero{padding-block:48px 24px}
+.hand{font-family:var(--hand);font-weight:700;color:var(--pen);font-size:30px;line-height:1.1;margin:0 0 10px;transform:rotate(-2deg);display:inline-block}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(36px,8.4vw,58px);line-height:1.06;letter-spacing:-1.4px;margin:0;text-wrap:balance}
+mark{background:linear-gradient(transparent 55%,var(--hl) 55%);color:inherit;padding:0 .08em}
+.scrawl{position:relative;white-space:nowrap}
+.scrawl svg{position:absolute;left:-4%;top:42%;width:108%;height:40%;overflow:visible}
+.scrawl path{stroke:var(--red);stroke-width:5;fill:none;stroke-linecap:round;stroke-dasharray:420;stroke-dashoffset:0;animation:strike 1s .7s ease-out backwards}
+@keyframes strike{from{stroke-dashoffset:420}}
+.game{margin-top:30px;background:#fff;border:2.5px solid var(--ink);border-radius:20px;box-shadow:6px 6px 0 var(--ink);padding:18px;position:relative}
+.game p{margin:0 0 4px;font-weight:700}
+.game small{color:var(--muted);font-size:14px}
+.arena{position:relative;height:150px;margin-top:12px;touch-action:manipulation}
+.b{position:absolute;font:inherit;font-weight:700;min-height:48px;padding:0 18px;border-radius:14px;cursor:pointer;border:2.5px solid var(--ink);transition:left .18s ease,top .18s ease,transform .18s ease}
+.b:focus-visible{outline:3px solid var(--pen);outline-offset:2px}
+#later{left:0;top:10px;background:#fff;color:var(--ink)}
+#go{position:static;margin-top:14px;background:var(--mango);color:var(--ink);box-shadow:3px 3px 0 var(--ink);text-decoration:none;display:flex;align-items:center;justify-content:center}
+.quip{position:absolute;left:0;bottom:-6px;font-family:var(--hand);font-size:24px;color:var(--red);min-height:28px}
+.say{font-family:var(--display);font-weight:700;font-size:clamp(28px,6.4vw,40px);line-height:1.14;letter-spacing:-.7px;margin:0;text-wrap:balance}
+.note-hand{font-family:var(--hand);font-size:26px;color:var(--pen);margin:10px 0 0;transform:rotate(-1.5deg)}
+.phone-row{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-top:26px}
+.phone{width:210px;max-width:100%;aspect-ratio:210/420;border-radius:36px;background:var(--ink);padding:9px;transform:rotate(-4deg);box-shadow:8px 10px 0 rgba(27,36,64,.15);flex:none}
+.screen{height:100%;border-radius:28px;background:linear-gradient(180deg,#4A5BA0,#1B2440);position:relative;color:#fff;display:flex;flex-direction:column;align-items:center}
+.clock{font-family:var(--display);font-weight:700;font-size:48px;margin-top:40px;line-height:1}
+.notif{position:absolute;left:8px;right:8px;top:44%;background:#fff;color:var(--ink);border-radius:16px;padding:10px 11px;font-size:13px;font-weight:600;line-height:1.3;animation:drop .8s 1s cubic-bezier(.2,.9,.25,1.25) backwards}
+.notif b{display:flex;align-items:center;gap:6px;font-size:11px;margin-bottom:4px}
+.notif b i{width:18px;height:18px;border-radius:9px;background:var(--ink);color:var(--mango);font-style:normal;display:grid;place-items:center;font-size:11px}
+@keyframes drop{from{transform:translateY(-20px);opacity:.001}}
+.phone-txt{flex:1 1 220px;min-width:0}
+.phone-txt p{margin:0 0 10px}
+.notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
+.note{background:#FFF6D8;padding:16px 14px 14px;position:relative;box-shadow:2px 4px 0 rgba(27,36,64,.12)}
+.note:nth-child(3n+1){transform:rotate(-2deg)}.note:nth-child(3n+2){transform:rotate(1.5deg);background:#E8EEFF}.note:nth-child(3n){transform:rotate(-.6deg);background:#FFE7E3}
+.note::before{content:"";position:absolute;top:-10px;left:50%;width:64px;height:20px;margin-left:-32px;background:var(--tape);transform:rotate(-3deg)}
+.note strong{display:block;font-family:var(--display);font-size:36px;line-height:1;letter-spacing:-1px}
+.note span{font-size:14px;font-weight:600;color:var(--muted)}
+.list{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:14px}
+.list li{display:flex;gap:12px;align-items:flex-start;font-size:17px}
+.list li svg{flex:none;margin-top:3px}
+.list li em{font-style:normal;font-family:var(--hand);font-size:22px;color:var(--pen)}
+.letter{background:#fff;border:2.5px solid var(--ink);border-radius:6px;padding:24px 22px;transform:rotate(1deg);box-shadow:6px 6px 0 var(--mango)}
+.letter p{margin:0 0 10px}
+.sign{font-family:var(--hand);font-weight:700;font-size:40px;line-height:1;color:var(--pen);margin-top:8px}
+.cta{display:flex;flex-direction:column;gap:12px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:64px;border-radius:18px;background:var(--ink);color:#fff;font-family:var(--display);font-weight:700;font-size:21px;text-decoration:none;box-shadow:5px 5px 0 var(--mango)}
+.btn:focus-visible{outline:3px solid var(--pen);outline-offset:3px}
+.btn[aria-disabled="true"]{background:#8E97B5;box-shadow:none;pointer-events:none}
+.small{font-size:14px;color:var(--muted);text-align:center;margin:0}
+.arrow{font-family:var(--hand);font-size:26px;color:var(--red);text-align:center;transform:rotate(-3deg)}
+footer{padding-block:20px 56px;text-align:center;color:var(--muted);font-size:14px}
+.ba{display:grid;gap:16px;margin-top:22px}
+.ba-card{border-radius:18px;padding:18px 20px;border:2.5px solid var(--ink)}
+.ba-card small{display:block;font-family:var(--marker);font-size:18px;margin-bottom:6px}
+.ba-card p{margin:0;font-size:18px;line-height:1.45}
+.before{background:#fff;transform:rotate(-.8deg)}
+.before small{color:var(--muted)}
+.after{background:var(--ink);color:#fff;transform:rotate(.8deg);box-shadow:6px 6px 0 var(--mango)}
+.after small{color:var(--mango)}
+.aside{font-family:var(--hand);font-weight:700;font-size:.7em;color:var(--pen);letter-spacing:0}
+.vision-link{display:flex;align-items:center;justify-content:space-between;margin-top:26px;min-height:56px;padding:0 18px;border:2.5px dashed var(--pen);border-radius:16px;color:var(--pen);font-family:var(--display);font-weight:700;font-size:19px;text-decoration:none;background:rgba(255,255,255,.7)}
+.commu{margin-top:26px;background:#fff;border:2.5px solid var(--ink);border-radius:20px;padding:18px;transform:rotate(-.6deg);box-shadow:5px 5px 0 var(--pen)}
+.commu-hand{font-family:var(--hand);font-weight:700;font-size:24px;color:var(--pen);margin:0 0 6px;transform:rotate(-2deg)}
+.commu-txt{margin:0 0 14px;font-size:16px}
+.commu-btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;border-radius:14px;background:var(--pen);color:#fff;font-family:var(--display);font-weight:700;font-size:18px;text-decoration:none}
+.commu-btn:focus-visible{outline:3px solid var(--pen);outline-offset:3px}
+.vision-link:focus-visible{outline:3px solid var(--pen);outline-offset:3px}
+/* Défi 7 jours */
+.lead-defi{font-size:18px;margin:0 0 6px}
+.defi{list-style:none;margin:22px 0 8px;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;align-items:start}
+.defi li{display:flex;flex-direction:column;align-items:center;gap:6px}
+.defi b{width:42px;height:42px;max-width:100%;aspect-ratio:1;border-radius:50%;border:2.5px solid var(--ink);display:grid;place-items:center;font-family:var(--display);font-size:18px;background:#fff}
+.defi .today b{background:var(--mango);box-shadow:3px 3px 0 var(--ink);transform:rotate(-6deg)}
+.defi .last b{background:var(--ink);color:#fff}
+.defi span{font-family:var(--hand);font-weight:700;font-size:19px;line-height:1;color:var(--red);white-space:nowrap;transform:rotate(-4deg)}
+.defi .last span{color:var(--pen)}
+.defi .today span{align-self:flex-start}.defi .last span{align-self:flex-end}
+.slogan{font-family:var(--marker);font-size:clamp(30px,7.6vw,42px);line-height:1.1;color:var(--red);transform:rotate(-2deg);margin:16px 0 6px!important}
+@media (max-width:420px){.notes{gap:14px}.note strong{font-size:30px}}
+@media (prefers-reduced-motion: reduce){.scrawl path,.notif{animation:none}.b{transition:none}}
+</style>
+
+<div class="col">
+  <div class="top"><span class="logo">tremplin</span><span class="stamp">BÊTA</span></div>
+
+  <section class="hero">
+    <p class="hand" id="hello">Salut toi,</p>
+    <h1>On a passé des mois à construire un truc pour que tu arrêtes de dire <mark class="scrawl">« je postule demain »<svg viewBox="0 0 300 30" preserveAspectRatio="none" aria-hidden="true"><path d="M2 18 C 60 8, 120 26, 180 12 S 270 20, 298 10"/></svg></mark>.</h1>
+
+    <div class="game" aria-label="Petit test">
+      <p>Petit test. Ton stage, tu t'y mets quand ?</p>
+      <small>Touche ta réponse. Honnêtement.</small>
+      <div class="arena" id="arena">
+        <button class="b" id="later" type="button">Je postule demain</button>
+        <div class="quip" id="quip" aria-live="polite"></div>
+      </div>
+      <a class="b" id="go" href="#install">Aujourd'hui, je teste</a>
+    </div>
+  </section>
+
+  <section>
+    <p class="say">On sait tous quoi faire. <mark>Le problème, c'est de le faire.</mark></p>
+    <div class="phone-row">
+      <div class="phone" role="img" aria-label="Notification du coach : Mardi, tu m'as dit 3 candidatures. On en est où ?">
+        <div class="screen"><div class="clock">18:02</div>
+          <div class="notif"><b><i>T</i>Ton coach</b>Mardi, tu m'as dit 3 candidatures. On en est où ?</div>
+        </div>
+      </div>
+      <div class="phone-txt">
+        <p><strong>Imagine fermer ton ordi le soir en sachant que t'as avancé.</strong> Plus de boule au ventre le dimanche soir, plus de « faut vraiment que je m'y mette ». Tremplin te dit quoi faire maintenant, te relance quand tu lâches, et tu le fais.</p>
+        <p class="note-hand">(oui, il est un peu insistant. c'est le but.)</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="say">Ce que ça change</p>
+    <div class="ba">
+      <div class="ba-card before"><small>Avant</small><p>47 onglets ouverts, zéro candidature envoyée, et cette petite culpabilité qui revient chaque soir.</p></div>
+      <div class="ba-card after"><small>Après</small><p>Une action par jour, le plaisir de toucher « C'est fait », et le jour où tu signes, la fierté de l'avoir vraiment mérité.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="say">Le Défi 7 jours</p>
+    <p class="lead-defi">Pas « quand j'aurai le temps ». 7 jours, une mission par jour, quelques minutes à chaque fois. Et ça commence aujourd'hui.</p>
+    <ol class="defi" aria-label="Sept jours, le premier commence aujourd'hui">
+      <li class="today"><b>1</b><span>aujourd'hui</span></li>
+      <li><b>2</b></li><li><b>3</b></li><li><b>4</b></li><li><b>5</b></li><li><b>6</b></li>
+      <li class="last"><b>7</b><span>le bilan</span></li>
+    </ol>
+    <ul class="list">
+      <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3D63DD" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 12l3 3 5-6"/></svg><span><strong>Jour 1 :</strong> tu installes, tu fais ta première mission, et 3 minutes pour nous dire ce que t'en penses à chaud.</span></li>
+      <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3D63DD" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 12l3 3 5-6"/></svg><span><strong>Jours 2 à 6 :</strong> une mission par jour. Le coach te relance si t'oublies. <em>il oublie pas, lui.</em></span></li>
+      <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3D63DD" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 12l3 3 5-6"/></svg><span><strong>Jour 7 :</strong> le vrai bilan, 5 minutes. C'est là que ton avis compte le plus.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <p class="say">Les coulisses <span class="aside">(oui, on s'est donné du mal)</span></p>
+    <div class="notes">
+      <div class="note"><strong>57</strong><span>leçons de 2 minutes</span></div>
+      <div class="note"><strong>72</strong><span>fiches métiers vérifiées</span></div>
+      <div class="note"><strong>612</strong><span>questions dans les jeux</span></div>
+      <div class="note"><strong>208</strong><span>tests pour que rien ne casse (normalement)</span></div>
+      <div class="note"><strong>7</strong><span>étudiants coachés avant d'écrire une ligne de code</span></div>
+      <div class="note"><strong>2</strong><span>étudiants en alternance qui ont codé la nuit</span></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="say">Ce qu'on te demande</p>
+    <ul class="list">
+      <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3D63DD" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 12l3 3 5-6"/></svg><span>Tu cherches encore ? Fais le défi sur ta vraie recherche, pas pour de faux.</span></li>
+      <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3D63DD" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 12l3 3 5-6"/></svg><span>Tu as déjà ton stage ? Fais le défi quand même, et sois sans pitié : dis-nous ce qui t'aurait aidé l'an dernier. <em>on encaisse.</em></span></li>
+      <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3D63DD" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 12l3 3 5-6"/></svg><span>Fais-le passer à quelqu'un qui galère avec sa recherche.</span></li>
+    </ul>
+    <p class="note-hand" style="margin-top:22px">et si t'as envie de t'impliquer plus que ça dans Tremplin, dis-le nous. on a de la place pour toi.</p>
+  </section>
+
+  <section>
+    <div class="letter">
+      <p>On aurait pu envoyer un lien à tout le monde. On a préféré commencer par les gens dont l'avis compte pour nous.</p>
+      <p>Tout ce que tu nous diras finira dans l'app. Merci d'en faire partie.</p>
+      <p>Et franchement ? « Je postule demain », on l'a tous dit. Nous aussi, pendant des mois, avant de nous y mettre. Alors on te dit ce qu'on aurait aimé entendre :</p>
+      <p class="slogan">Arrête de dire demain.</p>
+      <div class="sign">Dorian &amp; Maxime</div>
+    </div>
+    <a class="vision-link" href="vision.html">Notre vision, en 2 minutes <span aria-hidden="true">→</span></a>
+  </section>
+
+  <section class="cta" id="install">
+    <p class="arrow">dans 7 jours, tu nous diras merci. (ou ce qui va pas, ça marche aussi) ↓</p>
+    <a class="btn" id="installBtn" href="#" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+      <span id="installText">Je commence aujourd'hui</span>
+    </a>
+    <p class="small">Ce bouton installe la bêta sur ton iPhone. Apple te proposera d'abord l'app TestFlight : c'est normal, c'est elle qui installe les bêtas. Deux minutes en tout. iPhone uniquement pour l'instant.</p>
+    <div class="commu" id="avis" hidden>
+      <p class="commu-hand">et après ta première mission ↓</p>
+      <p class="commu-txt"><strong>Dis-nous ce que t'en penses, à chaud.</strong> 3 minutes, promis. Sois honnête : c'est comme ça que l'app s'améliore.</p>
+      <a class="commu-btn" id="avisBtn" href="#" target="_blank" rel="noopener"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>Donner mon avis</a>
+    </div>
+  </section>
+
+  <footer>Une question ? Réponds au message qui t'a envoyé ce lien.</footer>
+</div>
+
+<script>
+/* Lien TestFlight : à renseigner. */
+const TESTFLIGHT_URL = "https://testflight.apple.com/join/p9wHz7NK";
+
+/* Prénom optionnel dans le lien : adresse de la page + #ines */
+(function(){const h=decodeURIComponent((location.hash||'').slice(1)).trim();
+  if(/^[a-z][a-z-]{0,20}$/i.test(h)&&h!=='install'){document.getElementById('hello').textContent='Salut '+h.split('-').map(s=>s.charAt(0).toUpperCase()+s.slice(1)).join(' ')+',';}})();
+
+const quips=["demain ? t'es sûr ?","on l'a tous dit. nous aussi.","le coach t'a vu.","demain, c'est jamais.","tu fatigues là…","bon. aujourd'hui, alors ?"];
+let tries=0;
+const later=document.getElementById('later'), arena=document.getElementById('arena'), quip=document.getElementById('quip');
+function flee(e){
+  if(tries>=quips.length){return;}
+  if(e){e.preventDefault();}
+  tries++;
+  quip.textContent=quips[tries-1];
+  if(tries>=quips.length){
+    later.textContent='Ok… aujourd\'hui';
+    later.style.left='0px';later.style.top='10px';later.style.transform='none';
+    later.style.background='var(--mango)';
+    later.onclick=()=>document.getElementById('install').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+    return;
+  }
+  const W=arena.clientWidth-later.offsetWidth, H=arena.clientHeight-later.offsetHeight-30;
+  const x=Math.max(0,Math.random()*W), y=Math.max(0,Math.random()*H);
+  later.style.left=x+'px';later.style.top=y+'px';
+  later.style.transform=`rotate(${(Math.random()*16-8).toFixed(1)}deg) scale(${(1-tries*0.07).toFixed(2)})`;
+}
+later.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')flee();});
+later.addEventListener('pointerdown',flee);
+later.addEventListener('click',e=>{if(tries<quips.length)flee(e);});
+later.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&tries<quips.length){flee(e);}});
+
+/* Questionnaire du jour 1 : coller le lien (Tally, Google Forms…). Tant qu'il est vide, l'encadré reste caché. */
+const AVIS_URL = "https://tally.so/r/GepXx2";
+if(AVIS_URL){document.getElementById('avisBtn').href=AVIS_URL;document.getElementById('avis').hidden=false;}
+
+const btn=document.getElementById('installBtn');
+if(TESTFLIGHT_URL){btn.href=TESTFLIGHT_URL;}
+else{btn.setAttribute('aria-disabled','true');btn.removeAttribute('href');document.getElementById('installText').textContent='Le lien arrive très vite';}
+</script>
